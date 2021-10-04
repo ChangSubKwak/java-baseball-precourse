@@ -12,7 +12,7 @@ public class BallCreator {
     public static BallNumbers create() {
         List<Integer> ballNumbersList = new ArrayList<>();
 
-        while(ballNumbersList.size() < BALL_NUMBERS_SIZE) {
+        while (ballNumbersList.size() < BALL_NUMBERS_SIZE) {
             addRandomBallNumber(ballNumbersList);
         }
         return BallNumbers.from(ballNumbersList);

@@ -17,7 +17,8 @@ public class BaseBallController {
         InputView inputView = new InputView();
         ResultView resultView = new ResultView();
         try {
-            BallJudgeResult ballJudgeResult = ballJudge.judge(computerBallNumbers, BallNumbers.from(inputView.inputBallNumbers()));
+            BallJudgeResult ballJudgeResult = ballJudge.judge(computerBallNumbers,
+                BallNumbers.from(inputView.inputBallNumbers()));
             resultView.outputResult(ballJudgeResult.strikeCount(), ballJudgeResult.ballCount());
         } catch (IllegalArgumentException e) {
             resultView.outputErrorMessage(e.getMessage());

@@ -12,6 +12,6 @@ public class Application {
             BallJudge ballJudge = new BallJudge();
             BallNumbers computerBallNumbers = BallCreator.create();
             BaseBallController.innerLoop(ballJudge, computerBallNumbers);
-        } while(inputView.inputRetry());
+        } while (inputView.inputRetry());
     }
 }

@@ -8,7 +8,6 @@ import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import baseball.domain.BallNumber;
 import baseball.domain.BallNumbers;
 
 class BallNumbersTest {
@@ -37,7 +36,8 @@ class BallNumbersTest {
     @DisplayName("정적팩터리 메서드 from의 인자인 BallNumbers의 정해진 크기인 3보다 크다면 예외가 발생한다")
     @Test
     void exceptionTest3() {
-        assertThatThrownBy(() -> BallNumbers.from(Arrays.asList(1, 2, 3, 4))).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> BallNumbers.from(Arrays.asList(1, 2, 3, 4))).isInstanceOf(
+            IllegalArgumentException.class);
     }
 
     @DisplayName("정적팩터리 메서드 from의 인자인 BallNumber의 원소가 중복된다면 예외가 발생한다")

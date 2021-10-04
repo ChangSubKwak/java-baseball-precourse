@@ -19,7 +19,7 @@ public class InputView {
     public boolean inputRetry() {
         System.out.println(INPUT_RETRY);
         String answer = Console.readLine();
-        while(!Arrays.asList(INPUT_CONTINUE_SYMBOL, INPUT_END_SYMBOL).contains(answer)) {
+        while (!Arrays.asList(INPUT_CONTINUE_SYMBOL, INPUT_END_SYMBOL).contains(answer)) {
             System.out.println(INPUT_ERROR);
             answer = Console.readLine();
         }

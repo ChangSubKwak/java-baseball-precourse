@@ -1,9 +1,7 @@
 package baseball;
 
-import static baseball.domain.BallJudge.*;
 import static org.assertj.core.api.Assertions.*;
 
-import java.util.Random;
 import java.util.stream.Stream;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -20,6 +18,17 @@ import baseball.domain.BallNumbers;
 class BallJudgeTest {
     private BallJudge ballJudge;
 
+    private static Stream<Arguments> judgeTest() {
+        return Stream.of(
+            Arguments.of("713", "123", BallJudgeResult.from(1, 1)),
+            Arguments.of("713", "145", BallJudgeResult.from(0, 1)),
+            Arguments.of("713", "671", BallJudgeResult.from(0, 2)),
+            Arguments.of("713", "216", BallJudgeResult.from(1, 0)),
+            Arguments.of("713", "624", BallJudgeResult.from(0, 0)),
+            Arguments.of("713", "713", BallJudgeResult.from(3, 0))
+        );
+    }
+
     @BeforeEach
     void setUp() {
         ballJudge = new BallJudge();
@@ -29,18 +38,9 @@ class BallJudgeTest {
     @ParameterizedTest
     @MethodSource
     void judgeTest(String computerBallNumbers, String humanBallNumbers, BallJudgeResult expected) {
-        assertThat(ballJudge.judge(BallNumbers.from(computerBallNumbers), BallNumbers.from(humanBallNumbers))).isEqualTo(expected);
-    }
-
-    private static Stream<Arguments> judgeTest() {
-        return Stream.of(
-            Arguments.of("713", "123",  BallJudgeResult.from(1, 1) ),
-            Arguments.of("713", "145",  BallJudgeResult.from(0, 1) ),
-            Arguments.of("713", "671",  BallJudgeResult.from(0, 2) ),
-            Arguments.of("713", "216",  BallJudgeResult.from(1, 0) ),
-            Arguments.of("713", "624",  BallJudgeResult.from(0, 0) ),
-            Arguments.of("713", "713",  BallJudgeResult.from(3, 0) )
-        );
+        assertThat(
+            ballJudge.judge(BallNumbers.from(computerBallNumbers), BallNumbers.from(humanBallNumbers))).isEqualTo(
+            expected);
     }
 
     @DisplayName(" 스트라이크가 3개에 해당하는 데이터를 인자로 받아 judge를 호출후, 게임 종료여부 함수를 호출하면 참을 얻는다")
