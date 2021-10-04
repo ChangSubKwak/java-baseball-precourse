@@ -16,7 +16,7 @@ public class BallNumber {
         }
     }
 
-    final int ballNumber;
+    private final int ballNumber;
 
     private BallNumber(int ballNumber) {
         validate(ballNumber);

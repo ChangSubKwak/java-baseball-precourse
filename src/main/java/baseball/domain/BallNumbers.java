@@ -12,7 +12,7 @@ public class BallNumbers {
     private static final String BALL_NUMBERS_SIZE_EXCEPTION_STATEMENT = "볼 넘버값 배열의 크기가 3이 아닙니다.";
     private static final String BALL_NUMBERS_DUPLICATION_EXCEPTION_STATEMENT = "볼 넘버값이 중복됩니다.";
 
-    List<BallNumber> ballNumbers;
+    private final List<BallNumber> ballNumbers;
 
     private BallNumbers(List<Integer> ballNumbers) {
         validate(ballNumbers);
@@ -35,6 +35,12 @@ public class BallNumbers {
         return new BallNumbers(ballNumbers);
     }
 
+    private static void validateString(String ballNumbersString) {
+        if (Objects.isNull(ballNumbersString) || ballNumbersString.isEmpty()) {
+            throw new IllegalArgumentException(BALL_NUMBERS_IS_NULL_EXCEPTION_STATEMENT);
+        }
+    }
+
     private void validate(List<Integer> ballNumbers) {
         if (Objects.isNull(ballNumbers)) {
             throw new IllegalArgumentException(BALL_NUMBERS_IS_NULL_EXCEPTION_STATEMENT);
@@ -44,12 +50,6 @@ public class BallNumbers {
         }
         if (containsDuplication(ballNumbers)) {
             throw new IllegalArgumentException(BALL_NUMBERS_DUPLICATION_EXCEPTION_STATEMENT);
-        }
-    }
-
-    private static void validateString(String ballNumbersString) {
-        if (Objects.isNull(ballNumbersString) || ballNumbersString.isEmpty()) {
-            throw new IllegalArgumentException(BALL_NUMBERS_IS_NULL_EXCEPTION_STATEMENT);
         }
     }
 
